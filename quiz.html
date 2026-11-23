@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Arena - Smart Quiz</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="app-container">
+            <nav class="navbar">
+                <a href="index.html" class="logo-wrapper">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="logo-text">Smart <span>Quiz</span></span>
+                </a>
+
+                <div class="nav-actions">
+                    <button class="btn btn-sm btn-danger" id="header-submit-btn" style="display: inline-flex;">
+                        <i class="fa-solid fa-flag-checkered"></i> Finish Quiz
+                    </button>
+                    <button class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+                        <i class="fa-solid fa-moon"></i>
+                        <span class="theme-text">Dark Mode</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="app-container">
+            <div class="quiz-wrapper">
+
+                <!-- Quiz Top Meta Bar -->
+                <div class="quiz-top-bar">
+                    <div class="quiz-meta-info">
+                        <div class="quiz-info-chip">
+                            <i class="fa-solid fa-user-graduate" style="color: var(--accent-primary);"></i>
+                            <span id="quiz-student-name">Student</span>
+                        </div>
+                        <div class="quiz-info-chip" id="quiz-category-title">
+                            <i class="fa-solid fa-code"></i>
+                            <span>Category</span>
+                        </div>
+                    </div>
+
+                    <div class="timer-badge" title="Time Remaining">
+                        <span id="quiz-timer"><i class="fa-regular fa-clock"></i> <span>10:00</span></span>
+                    </div>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="progress-container">
+                    <div class="progress-header">
+                        <span>Question <span id="current-question-num">1</span> of <span id="quiz-total-questions">10</span></span>
+                        <span>Answer Progress</span>
+                    </div>
+                    <div class="progress-track">
+                        <div class="progress-fill" id="quiz-progress-bar"></div>
+                    </div>
+                </div>
+
+                <!-- Quick Jump Question Palette -->
+                <div class="palette-wrapper">
+                    <div class="palette-label">
+                        <i class="fa-solid fa-grid-2"></i> Question Navigator:
+                    </div>
+                    <div class="palette-grid" id="question-palette">
+                        <!-- Populated dynamically (1 to 10) -->
+                    </div>
+                    <div class="palette-summary-pills">
+                        <span style="color: var(--success);"><i class="fa-solid fa-circle"></i> <strong id="palette-answered-count">0</strong> Answered</span>
+                        <span style="color: var(--text-muted);"><i class="fa-regular fa-circle"></i> <strong id="palette-remaining-count">10</strong> Remaining</span>
+                    </div>
+                </div>
+
+                <!-- Active Question Card -->
+                <div class="question-card" id="active-question-card">
+                    <div class="question-prompt-header">
+                        <span class="question-badge">Multiple Choice</span>
+                        <span style="font-size: 0.85rem; color: var(--text-muted);">1 Mark</span>
+                    </div>
+
+                    <h2 class="question-text" id="question-text">
+                        Loading question...
+                    </h2>
+
+                    <!-- 4 Answer Options Grid -->
+                    <div class="options-grid" id="options-container" role="radiogroup" aria-label="Question options">
+                        <!-- Options generated dynamically -->
+                    </div>
+                </div>
+
+                <!-- Navigation Controls Bottom Bar -->
+                <div class="quiz-controls-bar">
+                    <div class="controls-left">
+                        <button class="btn btn-secondary" id="prev-question-btn" disabled>
+                            <i class="fa-solid fa-arrow-left"></i> Previous
+                        </button>
+                        <button class="btn btn-secondary" id="clear-choice-btn" title="Unselect choice for this question">
+                            <i class="fa-solid fa-eraser"></i> Clear Choice
+                        </button>
+                    </div>
+
+                    <div class="controls-right">
+                        <button class="btn btn-primary" id="next-question-btn">
+                            Next Question <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button class="btn btn-success" id="submit-quiz-btn" style="display: none;">
+                            <i class="fa-solid fa-check-double"></i> Submit Quiz
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <!-- Confirmation Modal Dialog for Submission -->
+    <div class="modal-backdrop" id="submit-modal" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+        <div class="modal-dialog">
+            <div class="modal-icon">
+                <i class="fa-solid fa-circle-question"></i>
+            </div>
+            <h3 class="modal-title" id="modal-title">Submit Your Quiz?</h3>
+            <p class="modal-message">Please review your answer summary before submitting.</p>
+
+            <div class="modal-stats-summary">
+                <div class="modal-stat-box">
+                    <h5 id="modal-answered-count">0</h5>
+                    <span>Questions Answered</span>
+                </div>
+                <div class="modal-stat-box">
+                    <h5 id="modal-unanswered-count">0</h5>
+                    <span>Questions Skipped</span>
+                </div>
+            </div>
+
+            <div class="modal-warning-box" id="modal-unanswered-warning" style="display: none;">
+                <!-- Populated if unanswered questions exist -->
+            </div>
+
+            <div class="modal-actions">
+                <button class="btn btn-secondary" id="modal-cancel-btn">
+                    Keep Answering
+                </button>
+                <button class="btn btn-primary" id="modal-confirm-submit-btn">
+                    Yes, Submit Now
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="js/questions.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/quiz.js"></script>
+</body>
+</html>

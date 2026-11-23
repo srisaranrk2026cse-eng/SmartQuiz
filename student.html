@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration &amp; Category Selection - Smart Quiz</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="app-container">
+            <nav class="navbar">
+                <a href="index.html" class="logo-wrapper">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="logo-text">Smart <span>Quiz</span></span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="student.html" class="nav-link active"><i class="fa-solid fa-play"></i> Start Quiz</a></li>
+                    <li><a href="dashboard.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <div class="header-student-badge"></div>
+                    <button class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+                        <i class="fa-solid fa-moon"></i>
+                        <span class="theme-text">Dark Mode</span>
+                    </button>
+                    <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="app-container">
+
+            <div class="student-flow-card">
+                <h1 class="flow-title">Begin Your Quiz Journey</h1>
+                <p class="flow-subtitle">Please enter your student information and choose your preferred quiz category.</p>
+
+                <form id="student-form" novalidate>
+                    <!-- Student Full Name -->
+                    <div class="form-group">
+                        <label for="student-name-input" class="form-label">
+                            Student Name <span style="color: var(--danger);">*</span>
+                        </label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-user-graduate"></i>
+                            <input 
+                                type="text" 
+                                id="student-name-input" 
+                                class="form-input" 
+                                placeholder="e.g. Alex Morgan" 
+                                required 
+                                maxlength="40"
+                                autocomplete="name"
+                            >
+                        </div>
+                        <div class="form-hint">Enter your name as you would like it to appear on your result sheet.</div>
+                    </div>
+
+                    <!-- Department / Branch (Optional) -->
+                    <div class="form-group">
+                        <label for="student-branch-input" class="form-label">Department / Branch (Optional)</label>
+                        <div class="input-with-icon">
+                            <i class="fa-solid fa-building-columns"></i>
+                            <input 
+                                type="text" 
+                                id="student-branch-input" 
+                                class="form-input" 
+                                placeholder="e.g. Computer Science &amp; Engineering" 
+                                maxlength="50"
+                            >
+                        </div>
+                    </div>
+
+                    <!-- Category Selection -->
+                    <div class="form-group">
+                        <label class="form-label">
+                            Select Quiz Category <span style="color: var(--danger);">*</span>
+                        </label>
+                        <p class="form-hint" style="margin-bottom: 0.75rem;">Each quiz contains 10 questions with a 10-minute timer.</p>
+
+                        <div class="category-selection-grid" id="category-selector-container">
+                            <!-- Category: C++ -->
+                            <div class="cat-radio-card" data-category="cpp">
+                                <div class="cat-radio-icon" style="color: #00599c;">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+                                <div class="cat-radio-info">
+                                    <h4>C++ Programming</h4>
+                                    <span>10 Questions &bull; 10 Mins</span>
+                                </div>
+                            </div>
+
+                            <!-- Category: Python -->
+                            <div class="cat-radio-card" data-category="python">
+                                <div class="cat-radio-icon" style="color: #3776ab;">
+                                    <i class="fa-brands fa-python"></i>
+                                </div>
+                                <div class="cat-radio-info">
+                                    <h4>Python Programming</h4>
+                                    <span>10 Questions &bull; 10 Mins</span>
+                                </div>
+                            </div>
+
+                            <!-- Category: HTML and CSS -->
+                            <div class="cat-radio-card" data-category="web">
+                                <div class="cat-radio-icon" style="color: #e34f26;">
+                                    <i class="fa-brands fa-html5"></i>
+                                </div>
+                                <div class="cat-radio-info">
+                                    <h4>HTML and CSS</h4>
+                                    <span>10 Questions &bull; 10 Mins</span>
+                                </div>
+                            </div>
+
+                            <!-- Category: JavaScript -->
+                            <div class="cat-radio-card" data-category="javascript">
+                                <div class="cat-radio-icon" style="color: #f7df1e;">
+                                    <i class="fa-brands fa-js"></i>
+                                </div>
+                                <div class="cat-radio-info">
+                                    <h4>JavaScript</h4>
+                                    <span>10 Questions &bull; 10 Mins</span>
+                                </div>
+                            </div>
+
+                            <!-- Category: General Knowledge -->
+                            <div class="cat-radio-card" data-category="gk">
+                                <div class="cat-radio-icon" style="color: #2ecc71;">
+                                    <i class="fa-solid fa-earth-americas"></i>
+                                </div>
+                                <div class="cat-radio-info">
+                                    <h4>General Knowledge</h4>
+                                    <span>10 Questions &bull; 10 Mins</span>
+                                </div>
+                            </div>
+
+                            <!-- Category: Computer Fundamentals -->
+                            <div class="cat-radio-card" data-category="cs">
+                                <div class="cat-radio-icon" style="color: #9b59b6;">
+                                    <i class="fa-solid fa-microchip"></i>
+                                </div>
+                                <div class="cat-radio-info">
+                                    <h4>Computer Fundamentals</h4>
+                                    <span>10 Questions &bull; 10 Mins</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Form Actions -->
+                    <div style="margin-top: 2.5rem; text-align: center;">
+                        <button type="submit" class="btn btn-primary btn-lg" id="start-quiz-btn" style="min-width: 260px;">
+                            <i class="fa-solid fa-play"></i> Launch Quiz
+                        </button>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="app-container">
+            <div class="footer-bottom">
+                &copy; Smart Quiz Application. Responsive &amp; Beginner Friendly.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/questions.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const nameInput = document.getElementById('student-name-input');
+            const branchInput = document.getElementById('student-branch-input');
+            const form = document.getElementById('student-form');
+            const categoryCards = document.querySelectorAll('.cat-radio-card');
+
+            // 1. Prepopulate existing user details if stored
+            const existingUser = getUser();
+            if (existingUser) {
+                if (existingUser.name && nameInput) nameInput.value = existingUser.name;
+                if (existingUser.branch && branchInput) branchInput.value = existingUser.branch;
+            }
+
+            // 2. Pre-select category if previously set
+            let activeCategory = getSelectedCategory() || 'cpp';
+            highlightActiveCategory(activeCategory);
+
+            // 3. Category card click handler
+            categoryCards.forEach(card => {
+                card.addEventListener('click', () => {
+                    const catKey = card.getAttribute('data-category');
+                    activeCategory = catKey;
+                    setSelectedCategory(catKey);
+                    highlightActiveCategory(catKey);
+                });
+            });
+
+            function highlightActiveCategory(key) {
+                categoryCards.forEach(c => {
+                    if (c.getAttribute('data-category') === key) {
+                        c.classList.add('active');
+                    } else {
+                        c.classList.remove('active');
+                    }
+                });
+            }
+
+            // 4. Form submission and validation
+            form.addEventListener('submit', (e) => {
+                e.preventDefault();
+
+                const studentName = nameInput.value.trim();
+                const studentBranch = branchInput.value.trim();
+
+                // Validation: Name must not be empty and must have at least 2 characters
+                if (!studentName) {
+                    showToast('Please enter your student name.', 'warning');
+                    nameInput.focus();
+                    return;
+                }
+
+                if (studentName.length < 2) {
+                    showToast('Student name must be at least 2 characters long.', 'warning');
+                    nameInput.focus();
+                    return;
+                }
+
+                if (!activeCategory) {
+                    showToast('Please choose a quiz category.', 'warning');
+                    return;
+                }
+
+                // Save student profile
+                setUser({
+                    name: studentName,
+                    branch: studentBranch,
+                    updatedAt: Date.now()
+                });
+
+                setSelectedCategory(activeCategory);
+
+                showToast(`Welcome, ${studentName}! Starting your quiz...`, 'success', 1200);
+
+                setTimeout(() => {
+                    window.location.href = 'quiz.html';
+                }, 800);
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results &amp; Review - Smart Quiz</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Confetti Canvas for Celebratory Animation -->
+    <canvas id="confetti-canvas" class="result-canvas-container"></canvas>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="app-container">
+            <nav class="navbar">
+                <a href="index.html" class="logo-wrapper">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="logo-text">Smart <span>Quiz</span></span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="student.html" class="nav-link"><i class="fa-solid fa-play"></i> Start Quiz</a></li>
+                    <li><a href="dashboard.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <div class="header-student-badge"></div>
+                    <button class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+                        <i class="fa-solid fa-moon"></i>
+                        <span class="theme-text">Dark Mode</span>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="app-container">
+
+            <!-- Result Hero Score Card -->
+            <div class="result-card-hero">
+                <span class="result-hero-badge" id="result-grade-badge">Grade A+</span>
+
+                <!-- SVG Circular Score Ring -->
+                <div class="score-circle-wrapper">
+                    <svg class="score-circle-svg" width="180" height="180">
+                        <circle class="score-circle-bg" cx="90" cy="90" r="76"></circle>
+                        <circle class="score-circle-progress" id="score-circle-progress" cx="90" cy="90" r="76"></circle>
+                    </svg>
+                    <div class="score-circle-content">
+                        <div class="score-percentage" id="score-percentage">0%</div>
+                        <div class="score-fraction" id="score-fraction">0 / 10</div>
+                    </div>
+                </div>
+
+                <h1 class="result-performance-title" id="performance-title">Outstanding Performance!</h1>
+                <p class="result-performance-desc" id="performance-description">
+                    Well done! You have demonstrated exceptional understanding of the concepts.
+                </p>
+
+                <div class="result-student-tagline">
+                    Candidate: <strong id="result-student-name">Student</strong> &bull; 
+                    Subject: <strong id="result-category-name">C++</strong> &bull; 
+                    Date: <span id="result-date">Today</span> &bull; 
+                    Time Taken: <span id="result-time-taken">--</span>
+                </div>
+            </div>
+
+            <!-- 4 Summary Metric Cards Grid -->
+            <div class="result-metrics-grid">
+                <!-- Total Questions -->
+                <div class="metric-card metric-total">
+                    <div class="metric-icon-box">
+                        <i class="fa-solid fa-list-check"></i>
+                    </div>
+                    <div class="metric-data">
+                        <h4 id="metric-total">0</h4>
+                        <span>Total Questions</span>
+                    </div>
+                </div>
+
+                <!-- Correct Answers -->
+                <div class="metric-card metric-correct">
+                    <div class="metric-icon-box">
+                        <i class="fa-solid fa-circle-check"></i>
+                    </div>
+                    <div class="metric-data">
+                        <h4 id="metric-correct">0</h4>
+                        <span>Correct Answers</span>
+                    </div>
+                </div>
+
+                <!-- Wrong Answers -->
+                <div class="metric-card metric-wrong">
+                    <div class="metric-icon-box">
+                        <i class="fa-solid fa-circle-xmark"></i>
+                    </div>
+                    <div class="metric-data">
+                        <h4 id="metric-wrong">0</h4>
+                        <span>Wrong Answers</span>
+                    </div>
+                </div>
+
+                <!-- Unanswered Questions -->
+                <div class="metric-card metric-unanswered">
+                    <div class="metric-icon-box">
+                        <i class="fa-solid fa-circle-minus"></i>
+                    </div>
+                    <div class="metric-data">
+                        <h4 id="metric-unanswered">0</h4>
+                        <span>Unanswered</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Actions Bar -->
+            <div class="result-cta-bar">
+                <button class="btn btn-primary" id="retake-quiz-btn">
+                    <i class="fa-solid fa-rotate-right"></i> Restart Quiz
+                </button>
+                <button class="btn btn-secondary" id="choose-category-btn">
+                    <i class="fa-solid fa-layer-group"></i> Change Category
+                </button>
+                <button class="btn btn-secondary" id="view-dashboard-btn">
+                    <i class="fa-solid fa-chart-line"></i> View Dashboard
+                </button>
+                <button class="btn btn-secondary" id="print-result-btn" title="Print result report">
+                    <i class="fa-solid fa-print"></i> Print / Save PDF
+                </button>
+            </div>
+
+            <!-- Detailed Question Review & Explanations Section -->
+            <section class="review-section">
+                <div class="review-section-header">
+                    <div>
+                        <h2 class="section-title" style="font-size: 1.6rem; margin-bottom: 0.25rem;">Question &amp; Answer Review</h2>
+                        <p class="section-subtitle">Examine your answers and understand the concepts with detailed explanations.</p>
+                    </div>
+
+                    <!-- Filter Tabs -->
+                    <div class="review-filters">
+                        <button class="review-filter-btn active" data-filter="all">All</button>
+                        <button class="review-filter-btn" data-filter="correct">Correct</button>
+                        <button class="review-filter-btn" data-filter="wrong">Incorrect</button>
+                        <button class="review-filter-btn" data-filter="skipped">Skipped</button>
+                    </div>
+                </div>
+
+                <!-- List of reviewed questions -->
+                <div id="review-list-container">
+                    <!-- Cards populated by result.js -->
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="app-container">
+            <div class="footer-bottom">
+                &copy; Smart Quiz Application. Responsive &amp; Beginner Friendly.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/questions.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/result.js"></script>
+</body>
+</html>

@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Quiz - Master Your Engineering & Coding Knowledge</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="app-container">
+            <nav class="navbar">
+                <a href="index.html" class="logo-wrapper">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="logo-text">Smart <span>Quiz</span></span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="student.html" class="nav-link"><i class="fa-solid fa-play"></i> Start Quiz</a></li>
+                    <li><a href="dashboard.html" class="nav-link"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <div class="header-student-badge"></div>
+                    <button class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+                        <i class="fa-solid fa-moon"></i>
+                        <span class="theme-text">Dark Mode</span>
+                    </button>
+                    <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="app-container">
+
+            <!-- Hero Section -->
+            <section class="hero-section">
+                <div class="hero-pill">
+                    <i class="fa-solid fa-bolt"></i> Interactive Learning for Engineering Students
+                </div>
+                <h1 class="hero-title">
+                    Master Technical Concepts with <span class="gradient-text">Smart Quiz</span>
+                </h1>
+                <p class="hero-subtitle">
+                    Challenge yourself with timed multiple-choice quizzes, test your knowledge in programming and computer fundamentals, and review detailed explanations to accelerate your learning.
+                </p>
+
+                <div class="hero-actions">
+                    <a href="student.html" class="btn btn-primary btn-lg">
+                        <i class="fa-solid fa-circle-play"></i> Start Quiz Now
+                    </a>
+                    <a href="dashboard.html" class="btn btn-secondary btn-lg">
+                        <i class="fa-solid fa-chart-simple"></i> View Performance Dashboard
+                    </a>
+                </div>
+
+                <!-- Stats Bar -->
+                <div class="stats-bar">
+                    <div class="stat-item">
+                        <div class="stat-num">6</div>
+                        <div class="stat-label">Core Categories</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">60+</div>
+                        <div class="stat-label">Curated Questions</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">10 Mins</div>
+                        <div class="stat-label">Timed Challenges</div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-num">100%</div>
+                        <div class="stat-label">Detailed Explanations</div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Quiz Categories Section -->
+            <section class="categories-section">
+                <div class="section-header">
+                    <h2 class="section-title">Available Quiz Categories</h2>
+                    <p class="section-subtitle">Select a subject below to test your mastery and sharpen your skills.</p>
+                </div>
+
+                <div class="categories-grid" id="home-categories-grid">
+                    <!-- Category 1: C++ -->
+                    <div class="category-card" style="--card-color: #00599c;">
+                        <div>
+                            <div class="cat-header">
+                                <div class="cat-icon-box">
+                                    <i class="fa-solid fa-code"></i>
+                                </div>
+                                <span class="cat-badge">10 Questions</span>
+                            </div>
+                            <h3 class="cat-title">C++ Programming</h3>
+                            <p class="cat-desc">Pointers, Object-Oriented Programming (OOP), virtual functions, and dynamic memory management in C++.</p>
+                        </div>
+                        <div class="cat-footer">
+                            <span class="cat-meta-item"><i class="fa-regular fa-clock"></i> 10 Mins</span>
+                            <button class="btn btn-sm btn-outline" onclick="selectAndStartCategory('cpp')">
+                                Select <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Category 2: Python -->
+                    <div class="category-card" style="--card-color: #3776ab;">
+                        <div>
+                            <div class="cat-header">
+                                <div class="cat-icon-box">
+                                    <i class="fa-brands fa-python"></i>
+                                </div>
+                                <span class="cat-badge">10 Questions</span>
+                            </div>
+                            <h3 class="cat-title">Python Programming</h3>
+                            <p class="cat-desc">Python data types, slicing, list comprehensions, functions, generators, and core language idioms.</p>
+                        </div>
+                        <div class="cat-footer">
+                            <span class="cat-meta-item"><i class="fa-regular fa-clock"></i> 10 Mins</span>
+                            <button class="btn btn-sm btn-outline" onclick="selectAndStartCategory('python')">
+                                Select <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Category 3: HTML & CSS -->
+                    <div class="category-card" style="--card-color: #e34f26;">
+                        <div>
+                            <div class="cat-header">
+                                <div class="cat-icon-box">
+                                    <i class="fa-brands fa-html5"></i>
+                                </div>
+                                <span class="cat-badge">10 Questions</span>
+                            </div>
+                            <h3 class="cat-title">HTML &amp; CSS</h3>
+                            <p class="cat-desc">Semantic HTML5 tags, CSS Box Model, Flexbox, Grid, specificity, and responsive web design techniques.</p>
+                        </div>
+                        <div class="cat-footer">
+                            <span class="cat-meta-item"><i class="fa-regular fa-clock"></i> 10 Mins</span>
+                            <button class="btn btn-sm btn-outline" onclick="selectAndStartCategory('web')">
+                                Select <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Category 4: JavaScript -->
+                    <div class="category-card" style="--card-color: #f7df1e;">
+                        <div>
+                            <div class="cat-header">
+                                <div class="cat-icon-box">
+                                    <i class="fa-brands fa-js"></i>
+                                </div>
+                                <span class="cat-badge">10 Questions</span>
+                            </div>
+                            <h3 class="cat-title">JavaScript</h3>
+                            <p class="cat-desc">Scope, closures, DOM manipulation, asynchronous Promises, array methods, and modern ES6+ concepts.</p>
+                        </div>
+                        <div class="cat-footer">
+                            <span class="cat-meta-item"><i class="fa-regular fa-clock"></i> 10 Mins</span>
+                            <button class="btn btn-sm btn-outline" onclick="selectAndStartCategory('javascript')">
+                                Select <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Category 5: General Knowledge -->
+                    <div class="category-card" style="--card-color: #2ecc71;">
+                        <div>
+                            <div class="cat-header">
+                                <div class="cat-icon-box">
+                                    <i class="fa-solid fa-earth-americas"></i>
+                                </div>
+                                <span class="cat-badge">10 Questions</span>
+                            </div>
+                            <h3 class="cat-title">General Knowledge</h3>
+                            <p class="cat-desc">Science facts, world geography, historical milestones, famous inventors, and planetary science.</p>
+                        </div>
+                        <div class="cat-footer">
+                            <span class="cat-meta-item"><i class="fa-regular fa-clock"></i> 10 Mins</span>
+                            <button class="btn btn-sm btn-outline" onclick="selectAndStartCategory('gk')">
+                                Select <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <!-- Category 6: Computer Fundamentals -->
+                    <div class="category-card" style="--card-color: #9b59b6;">
+                        <div>
+                            <div class="cat-header">
+                                <div class="cat-icon-box">
+                                    <i class="fa-solid fa-microchip"></i>
+                                </div>
+                                <span class="cat-badge">10 Questions</span>
+                            </div>
+                            <h3 class="cat-title">Computer Fundamentals</h3>
+                            <p class="cat-desc">CPU architecture, binary arithmetic, operating system principles, RAM/ROM memory, and networking basics.</p>
+                        </div>
+                        <div class="cat-footer">
+                            <span class="cat-meta-item"><i class="fa-regular fa-clock"></i> 10 Mins</span>
+                            <button class="btn btn-sm btn-outline" onclick="selectAndStartCategory('cs')">
+                                Select <i class="fa-solid fa-arrow-right"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Features Showcase -->
+            <section class="features-section">
+                <div class="section-header">
+                    <h2 class="section-title">Why Students Love Smart Quiz</h2>
+                    <p class="section-subtitle">Built with modern web standards and focused on student success.</p>
+                </div>
+
+                <div class="features-grid">
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="fa-solid fa-stopwatch-20"></i></div>
+                        <h4 class="feature-title">Real-Time Timer</h4>
+                        <p class="feature-desc">Practice under real exam conditions with a 10-minute countdown timer and visual alerts.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="fa-solid fa-shuffle"></i></div>
+                        <h4 class="feature-title">Randomized Questions</h4>
+                        <p class="feature-desc">Questions and answer choices are randomized every attempt so you genuinely test your understanding.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="fa-solid fa-lightbulb"></i></div>
+                        <h4 class="feature-title">Step-by-Step Explanations</h4>
+                        <p class="feature-desc">Understand why each answer is correct with informative explanations immediately after submission.</p>
+                    </div>
+
+                    <div class="feature-box">
+                        <div class="feature-icon"><i class="fa-solid fa-database"></i></div>
+                        <h4 class="feature-title">Local Progress Tracking</h4>
+                        <p class="feature-desc">All your quiz scores and history are saved automatically in your browser's Local Storage.</p>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="app-container">
+            <div class="footer-content">
+                <div>
+                    <div class="logo-wrapper" style="margin-bottom: 0.5rem;">
+                        <div class="logo-icon" style="width: 32px; height: 32px; font-size: 1rem;">
+                            <i class="fa-solid fa-graduation-cap"></i>
+                        </div>
+                        <span class="logo-text">Smart <span>Quiz</span></span>
+                    </div>
+                    <p class="footer-tagline">An interactive, beginner-friendly quiz platform for first-year engineering students.</p>
+                </div>
+
+                <ul class="footer-links">
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="student.html">Start Quiz</a></li>
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-bottom">
+                &copy; Smart Quiz Application. Crafted with HTML5, CSS3 &amp; Vanilla JavaScript.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/questions.js"></script>
+    <script src="js/app.js"></script>
+    <script>
+        // Shortcut to pick category and navigate to student setup
+        function selectAndStartCategory(catKey) {
+            setSelectedCategory(catKey);
+            window.location.href = 'student.html';
+        }
+    </script>
+</body>
+</html>

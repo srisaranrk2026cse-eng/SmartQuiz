@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Performance Dashboard - Smart Quiz</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700;800&display=swap" rel="stylesheet">
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- Main Stylesheet -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- Main Navigation Header -->
+    <header class="main-header">
+        <div class="app-container">
+            <nav class="navbar">
+                <a href="index.html" class="logo-wrapper">
+                    <div class="logo-icon">
+                        <i class="fa-solid fa-graduation-cap"></i>
+                    </div>
+                    <span class="logo-text">Smart <span>Quiz</span></span>
+                </a>
+
+                <ul class="nav-links">
+                    <li><a href="index.html" class="nav-link"><i class="fa-solid fa-house"></i> Home</a></li>
+                    <li><a href="student.html" class="nav-link"><i class="fa-solid fa-play"></i> Start Quiz</a></li>
+                    <li><a href="dashboard.html" class="nav-link active"><i class="fa-solid fa-chart-line"></i> Dashboard</a></li>
+                </ul>
+
+                <div class="nav-actions">
+                    <div class="header-student-badge"></div>
+                    <button class="theme-toggle-btn" aria-label="Toggle Dark/Light Mode">
+                        <i class="fa-solid fa-moon"></i>
+                        <span class="theme-text">Dark Mode</span>
+                    </button>
+                    <button class="mobile-nav-toggle" aria-label="Open Navigation Menu">
+                        <i class="fa-solid fa-bars"></i>
+                    </button>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content" id="dashboard-view">
+        <div class="app-container">
+
+            <!-- Profile / Dashboard Welcome Card -->
+            <div class="dashboard-header-card">
+                <div class="dash-user-welcome">
+                    <div class="dash-avatar-circle">
+                        <i class="fa-solid fa-user-graduate"></i>
+                    </div>
+                    <div class="dash-welcome-text">
+                        <h2 id="dash-greeting">Student Performance Dashboard</h2>
+                        <p>Track your quiz attempts, average scores, and topic strengths across all tests.</p>
+                    </div>
+                </div>
+
+                <div>
+                    <a href="student.html" class="btn btn-primary">
+                        <i class="fa-solid fa-plus"></i> Take New Quiz
+                    </a>
+                </div>
+            </div>
+
+            <!-- Aggregate KPI Cards -->
+            <div class="dash-kpis-grid">
+                <!-- Total Quizzes -->
+                <div class="kpi-card">
+                    <div class="kpi-icon-box kpi-blue">
+                        <i class="fa-solid fa-trophy"></i>
+                    </div>
+                    <div class="kpi-info">
+                        <h3 id="dash-total-quizzes">0</h3>
+                        <span>Total Quizzes Attempted</span>
+                    </div>
+                </div>
+
+                <!-- Highest Score -->
+                <div class="kpi-card">
+                    <div class="kpi-icon-box kpi-green">
+                        <i class="fa-solid fa-star"></i>
+                    </div>
+                    <div class="kpi-info">
+                        <h3 id="dash-highest-score">0%</h3>
+                        <span>Highest Score Achieved</span>
+                    </div>
+                </div>
+
+                <!-- Average Score -->
+                <div class="kpi-card">
+                    <div class="kpi-icon-box kpi-purple">
+                        <i class="fa-solid fa-chart-pie"></i>
+                    </div>
+                    <div class="kpi-info">
+                        <h3 id="dash-avg-score">0%</h3>
+                        <span>Average Score</span>
+                    </div>
+                </div>
+
+                <!-- Total Questions Answered -->
+                <div class="kpi-card">
+                    <div class="kpi-icon-box kpi-orange">
+                        <i class="fa-solid fa-bullseye"></i>
+                    </div>
+                    <div class="kpi-info">
+                        <h3 id="dash-total-questions">0</h3>
+                        <span>Total Questions Solved</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Category Performance Breakdown -->
+            <section class="dash-breakdown-section">
+                <div class="section-header" style="text-align: left; margin-bottom: 1.25rem;">
+                    <h3 class="section-title" style="font-size: 1.4rem;">Performance by Category</h3>
+                    <p class="section-subtitle">Average score accuracy and attempts per subject.</p>
+                </div>
+
+                <div class="category-perf-grid" id="dash-category-breakdown">
+                    <!-- Cards populated dynamically by app.js -->
+                </div>
+            </section>
+
+            <!-- Quiz History Table Card -->
+            <div class="dash-history-card">
+                <div class="dash-history-header">
+                    <div>
+                        <h3 style="font-size: 1.4rem; margin-bottom: 0.25rem;">Recent Quiz Attempts</h3>
+                        <p style="font-size: 0.9rem; color: var(--text-muted);">Stored locally in your browser.</p>
+                    </div>
+
+                    <button class="btn btn-sm btn-secondary" id="dash-clear-history-btn" title="Clear All History">
+                        <i class="fa-regular fa-trash-can"></i> Clear History
+                    </button>
+                </div>
+
+                <!-- Empty State -->
+                <div class="empty-history-state" id="dash-empty-history" style="display: none;">
+                    <i class="fa-solid fa-clipboard-question"></i>
+                    <h4>No Quizzes Attempted Yet</h4>
+                    <p style="color: var(--text-muted); margin-bottom: 1.5rem;">You haven't completed any quizzes yet. Start one now to track your results!</p>
+                    <a href="student.html" class="btn btn-primary">
+                        <i class="fa-solid fa-play"></i> Start Your First Quiz
+                    </a>
+                </div>
+
+                <!-- Table Wrapper -->
+                <div class="dash-table-wrapper" id="dash-table-wrapper">
+                    <table class="history-table">
+                        <thead>
+                            <tr>
+                                <th>#</th>
+                                <th>Student</th>
+                                <th>Category</th>
+                                <th>Score</th>
+                                <th>Percentage</th>
+                                <th>Performance</th>
+                                <th>Date</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="dash-history-tbody">
+                            <!-- Populated dynamically by app.js -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="main-footer">
+        <div class="app-container">
+            <div class="footer-bottom">
+                &copy; Smart Quiz Application. Responsive &amp; Beginner Friendly.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/questions.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
